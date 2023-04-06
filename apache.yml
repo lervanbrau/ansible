@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Install Apache
+    apt:
+      name: apache2
+  - name: Start apache on boot
+    service:
+      name: apache2
+      state: started
+      enabled: true
+  - name: copy over SSH
+    ansible.builtil.copy:
+      src: index9.html
+      dest: /var/www/html/index9.html
